@@ -5,6 +5,7 @@
 > 要么提交上去,谁拉代码谁冲突
 
 
+
 > 要么不提,,每次提交的时候小心翼翼不把这些配置文件提上去
 
 ## 为什么.gitignore文件不管用?
@@ -63,7 +64,7 @@ git update-index --assume-unchanged filename
 
 ## 参考:
 
-[https://gist.github.com/scy/6636390](**delete-from-repo**)
+[delete from repo](https://gist.github.com/scy/6636390)
 
 
 
