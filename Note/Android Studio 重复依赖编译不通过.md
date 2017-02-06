@@ -1,3 +1,4 @@
+
 Android Studio 重复依赖编译不通过
 ---------------------
 Android项目中经常会出现两个依赖中使用到了相同的jar包导致编译不通过,比如:
@@ -31,41 +32,41 @@ maven库依赖exclude相应的jar
     compile ('com.baoyz.swipemenulistview:library:1.3.0'){
         exclude module: 'support-v4'
     }
-  
+
  网上有很多类似这样的代码教你去掉重复引用的jar,但怎么知道本地用的jar名字是什么呢?
- 
+
 
     查看项目用到的依赖:
-    gradlew -q dependencies moduleName:dependencies --configuration compile
+    gradlew -q dependencies app:dependencies --configuration compile
     结果:
     compile - Classpath for compiling the main sources.
-	+--- com.android.support:appcompat-v7:23.0.0
-	|    \--- com.android.support:support-v4:23.0.0 -> 23.0.1
-	|         \--- com.android.support:support-annotations:23.0.1
-	+--- com.squareup.okhttp:okhttp:2.5.0
-	|    \--- com.squareup.okio:okio:1.6.0
-	+--- com.squareup.okio:okio:1.6.0
-	+--- in.srain.cube:ultra-ptr:1.0.11
-	+--- com.android.support:recyclerview-v7:23.0.1
-	|    +--- com.android.support:support-v4:23.0.1 (*)
-	|    \--- com.android.support:support-annotations:23.0.1
-	+--- jp.wasabeef:recyclerview-animators:1.3.0
-	+--- org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2
-	+--- me.drakeet.labelview:labelview:0.7
-	+--- org.simple:androideventbus:latest
-	+--- io.reactivex:rxandroid:1.0.1	
-	|    \--- io.reactivex:rxjava:1.0.13 -> 1.0.15
-	+--- io.reactivex:rxjava:1.0.15
-	+--- com.jakewharton.rxbinding:rxbinding:0.2.0
-	|    +--- com.android.support:support-annotations:23.0.0 -> 23.0.1
-	|    \--- io.reactivex:rxjava:1.0.14 -> 1.0.15
-	+--- com.squareup.retrofit:retrofit:1.9.0
-	|    \--- com.google.code.gson:gson:2.3.1
-	+--- com.squareup.leakcanary:leakcanary-android:1.3
-	|    \--- com.squareup.leakcanary:leakcanary-analyzer:1.3
-	|         +--- com.squareup.haha:haha:1.1
-	|         \--- com.squareup.leakcanary:leakcanary-watcher:1.3
-	可以看到,每个依赖都由三段组成,groupId:artifactId:version,即 分组:名字:版本,所以名字就直接拿中间那段就对了
+    +--- com.android.support:appcompat-v7:23.0.0
+    |    \--- com.android.support:support-v4:23.0.0 -> 23.0.1
+    |         \--- com.android.support:support-annotations:23.0.1
+    +--- com.squareup.okhttp:okhttp:2.5.0
+    |    \--- com.squareup.okio:okio:1.6.0
+    +--- com.squareup.okio:okio:1.6.0
+    +--- in.srain.cube:ultra-ptr:1.0.11
+    +--- com.android.support:recyclerview-v7:23.0.1
+    |    +--- com.android.support:support-v4:23.0.1 (*)
+    |    \--- com.android.support:support-annotations:23.0.1
+    +--- jp.wasabeef:recyclerview-animators:1.3.0
+    +--- org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2
+    +--- me.drakeet.labelview:labelview:0.7
+    +--- org.simple:androideventbus:latest
+    +--- io.reactivex:rxandroid:1.0.1	
+    |    \--- io.reactivex:rxjava:1.0.13 -> 1.0.15
+    +--- io.reactivex:rxjava:1.0.15
+    +--- com.jakewharton.rxbinding:rxbinding:0.2.0
+    |    +--- com.android.support:support-annotations:23.0.0 -> 23.0.1
+    |    \--- io.reactivex:rxjava:1.0.14 -> 1.0.15
+    +--- com.squareup.retrofit:retrofit:1.9.0
+    |    \--- com.google.code.gson:gson:2.3.1
+    +--- com.squareup.leakcanary:leakcanary-android:1.3
+    |    \--- com.squareup.leakcanary:leakcanary-analyzer:1.3
+    |         +--- com.squareup.haha:haha:1.1
+    |         \--- com.squareup.leakcanary:leakcanary-watcher:1.3
+    可以看到,每个依赖都由三段组成,groupId:artifactId:version,即 分组:名字:版本,所以名字就直接拿中间那段就对了
 ###2. 本地jar包A和B含有相同的class(包名一样的才会有冲突)
 
 通过代码混淆,让类的名字变掉(比较简单,就不贴了),暂时还没找到其他更好的替代方案
