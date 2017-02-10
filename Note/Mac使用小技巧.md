@@ -51,6 +51,7 @@
   - crx Mouse 鼠标手势
   - 空格之神
   - 为知笔记
+  - Octotree github目录结构
 
 ## 技巧
 
@@ -64,40 +65,35 @@
 
 4. 在Finder中添加快捷图标：在应用程序的文件夹下按住cmd拖拽图标到Finder的窗口，移除同样是按住cmd键拖拽
 
-   5. 选中要整理的文件cmd+control+n 新建文件夹,或者右键选择归类文件
+5. 选中要整理的文件cmd+control+n 新建文件夹,或者右键选择归类文件
 
-5. 保存文件时,切到桌面 cmd+d
+6. 保存文件时,切到桌面 cmd+d
 
-6. 终端中用Finder打开当前目录 open .
+7. 终端中用Finder打开当前目录 open .
 
-7. 快捷推出U盘 cmd+e
+8. 快捷推出U盘 cmd+e
 
-8. spotlight中打开文件位置 cmd+enter
+9. spotlight中打开文件位置 cmd+enter
 
-9. 显示简介 cmd+i
+10. 显示简介 cmd+i
 
-10. 打开文件 cmd+o
+11. 打开文件 cmd+o
 
-11. cmd + shift + A/U/D/H/C，分别进入Finder的应用程序、实用工具、桌面、个人和电脑文件夹
+12. cmd + shift + A/U/D/H/C，分别进入Finder的应用程序、实用工具、桌面、个人和电脑文件夹
 
-12. 移动文件 复制文件后cmd+option+v
+13. 移动文件 复制文件后cmd+option+v
 
-13. 显示隐藏文件
-
-   ```
-   defaults write com.apple.finder AppleShowAllFiles -bool true;killall Finder
-   ```
-
-
-14.  finder标题栏显示完整路径
-
-    ```
-    defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
-    ```
-
+14. 显示隐藏文件
+```
+defaults write com.apple.finder AppleShowAllFiles -bool true;killall Finder
+```
+15. finder标题栏显示完整路径
+```
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+```
 ### 系统
 
-1. 全屏 command＋control+F
+1. 全屏 cmd＋control+F
 
 2. 回到桌面 F11
 
@@ -124,28 +120,23 @@
 13. 打开go2shell偏好 open -a Go2Shell --args config
 
 14. 创建可执行脚本
-
-   ```
-   #! /bin/bash
-   echo abc
-   终端中修改权限 chmod +x 文件.sh
-   文件拖拽到命令行进行执行
-   ```
-
+```
+#! /bin/bash
+echo abc
+终端中修改权限 chmod +x 文件.sh
+文件拖拽到命令行进行执行
+```
 15. 修改Launchpad图标行列
-
-   ```
-   列 defaults write com.apple.dock springboard-columns -int 8;killall Dock;
-   行 defaults write com.apple.dock springboard-rows -int 8;killall Dock;
-   恢复默认 defaults write com.apple.dock springboard-columns -int Default;killall Dock;
-   ```
-
-
+```
+列 defaults write com.apple.dock springboard-columns -int 8;killall Dock;
+行 defaults write com.apple.dock springboard-rows -int 8;killall Dock;
+恢复默认 defaults write com.apple.dock springboard-columns -int Default;killall Dock;
+```
 
 ### 手势
 
 1. 打开launchpad 五指合并
 2. 切换桌面 三指左右滑动
-3. 切换程序 三指上滑／command＋tab
+3. 切换程序 三指上滑／cmd＋tab
 4. 翻译,三指轻点
    ![](img/2016年08月16日_0.jpg)
