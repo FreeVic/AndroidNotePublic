@@ -1,3 +1,4 @@
+
 Java8 lambda表达式
 ---------------
 
@@ -20,51 +21,53 @@ lambda表达式的类型叫目标类型，即函数接口（只有一个显示�
 ###4. 使用场景：
 从形式上看lambda表达式只是节省了几句代码,但这并不是Java引入它的原因.Java的短期目标是配合集合类的内部迭代和批处理操作,长期目标是将Java向函数式语言这个方向引导.只是拥有函数式语言的特性,而不是完全变成函数式编程语言.所以Oracle并没有简单地使用内部类去实现lambda表达式
 
-1.替换匿名内部类
-2.集合类批处理／流操作
+1. 替换匿名内部类
 
-    a)Stream的一系列方法，例如：
-    i.filter 接收predicate类型
-    ii.foreach 接收consumer类型
-    iii.map 接收function类型
-    iv.以及配合Collectors的操作
+2. 集合类批处理／流操作
 
+   1. Stream的一系列方法，例如：
+      1. filter 接收predicate类型
+      2. foreach 接收consumer类型
+      3. map 接收function类型
+      4. 以及配合Collectors的操作
 
-    /**给出一个String类型的数组，找出其中所有不重复的素数
-     * @param numbers
-     */
-    public void distinctPrimary(String... numbers) {
-        List<String> l = Arrays.asList(numbers);
-        List<Integer> r = l.stream()
-                .map(e -> new Integer(e))
-                .filter(e -> isPrime(e))
-                .distinct()
-                .collect(Collectors.toList());
-        System.out.println("distinctPrimary result is: " + r);
-    }
+   ```
+   /**给出一个String类型的数组，找出其中所有不重复的素数
+    * @param numbers
+    */
+   public void distinctPrimary(String... numbers) {
+       List<String> l = Arrays.asList(numbers);
+       List<Integer> r = l.stream()
+               .map(e -> new Integer(e))
+               .filter(e -> isPrime(e))
+               .distinct()
+               .collect(Collectors.toList());
+       System.out.println("distinctPrimary result is: " + r);
+   }
 
-    /**给出一个String类型的数组，求其中所有不重复素数的和
-     * @param numbers
-     */
-    public void distinctPrimarySum(String... numbers) {
-        List<String> l = Arrays.asList(numbers);
-        int sum = l.stream()
-                .map(e -> new Integer(e))
-                .filter(e -> isPrime(e))
-                .distinct()
-                .reduce(0, (x,y) -> x+y); // equivalent to .sum()
-        System.out.println("distinctPrimarySum result is: " + sum);
-    }
+   /**给出一个String类型的数组，求其中所有不重复素数的和
+    * @param numbers
+    */
+   public void distinctPrimarySum(String... numbers) {
+       List<String> l = Arrays.asList(numbers);
+       int sum = l.stream()
+               .map(e -> new Integer(e))
+               .filter(e -> isPrime(e))
+               .distinct()
+               .reduce(0, (x,y) -> x+y); // equivalent to .sum()
+       System.out.println("distinctPrimarySum result is: " + sum);
+   }
 
-    /*// 统计年龄在25-35岁的男女人数、比例
-    public void boysAndGirls(List<Person> persons) {
-        Map<Integer, Integer> result = persons.parallelStream().filter(p -> p.getAge()>=25 && p.getAge()<=35).
-                collect(
-                        Collectors.groupingBy(p->p.getSex(), Collectors.summingInt(p->1))
-                );
-        System.out.print("boysAndGirls result is " + result);
-        System.out.println(", ratio (male : female) is " + (float)result.get(Person.MALE)/result.get(Person.FEMALE));
-    }*/
+   /*// 统计年龄在25-35岁的男女人数、比例
+   public void boysAndGirls(List<Person> persons) {
+       Map<Integer, Integer> result = persons.parallelStream().filter(p -> p.getAge()>=25 && p.getAge()<=35).
+               collect(
+                       Collectors.groupingBy(p->p.getSex(), Collectors.summingInt(p->1))
+               );
+       System.out.print("boysAndGirls result is " + result);
+       System.out.println(", ratio (male : female) is " + (float)result.get(Person.MALE)/result.get(Person.FEMALE));
+   }*/
+   ```
 
 ###5. 更多用法：
 1.lambda表达式嵌套
@@ -88,7 +91,7 @@ lambda表达式的类型叫目标类型，即函数接口（只有一个显示�
 2.方法引用
 
     a)静态方法／实例方法／构造器方法／父类方法引用等
-    
+
     //c1 与 c2 是一样的（静态方法引用）
     Comparator<Integer> c2 = (x, y) -> Integer.compare(x, y);
     Comparator<Integer> c1 = Integer::compare;

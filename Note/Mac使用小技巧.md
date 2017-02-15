@@ -117,7 +117,11 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
 
 12. 移动窗口到另外一个屏幕 (shiftIt) control+alt+cmd+N
 
-13. 打开go2shell偏好 open -a Go2Shell --args config
+13. 打开go2shell偏好
+
+   ```
+open -a Go2Shell --args config
+   ```
 
 14. 创建可执行脚本
 ```

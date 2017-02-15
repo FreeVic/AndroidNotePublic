@@ -107,7 +107,22 @@ protobuf，全称：Google Protocol Buffer，是 Google 08年左右开源的是�
 
 10. 选项
 
-11. 生成访问类
+   1. `java_package` (fileoption)生成java类所在的包
+   2. `java_outer_classname` (fileoption)要生成java类的名称
+   3. `optimize_for` (fileoption)可以被设置为 SPEED, CODE_SIZE,or LITE_RUNTIME
+      1. SPEED (default): protocol buffer 编译器将通过在消息类型上执行序列化、语法分析及其他通用的操作。这种代码是最优的
+      2. CODE_SIZE: protocol buffer 编译器将会产生最少量的类，通过共享或基于反射的代码来实现序列化、语法分析及各种其它操作。采用该方式产生的代码将比 SPEED 要少得多， 但是操作要相对慢些。当然实现的类及其对外的 API 与 SPEED 模式都是一样的。这种方式经常用在一些包含大量的. proto 文件而且并不盲目追求速度的 应用中。
+      3.  LITE_RUNTIME: protocol buffer 编译器依赖于运行时核心类库来生成代码（即采用 libprotobuf-lite 替代 libprotobuf）。这种核心类库由于忽略了一 些描述符及反射，要比全类库小得多。这种模式经常在移动手机平台应用多一些。编译器采用该模式产生的方法实现与 SPEED 模式不相上下，产生的类通过实现 MessageLite 接口，但它仅仅是 Messager 接口的一个子集。
+   4. `packed` (field option): 如果该选项在一个整型基本类型上被设置为真，则采用更紧凑的编码方式(仅针对基本数值类型)
+   5. `deprecated` (field option): 如果该选项被设置为 true，表明该字段已经被弃用了，在新代码中不建议使用。
+
+11. 自定义选项
+
+12. 生成访问类
+
+   ```
+   protoc --proto_path= --java_out=java Person.proto ./other/other.proto ./other/other1.proto
+   ```
 
 ## 疑问
 
@@ -115,6 +130,7 @@ protobuf，全称：Google Protocol Buffer，是 Google 08年左右开源的是�
    - 导入定义
 2. 设置的含义及用法
 3. 包名的写法
+4. 扩展使用int32类型,如何设置extension
 
 
 
