@@ -1,6 +1,6 @@
 
 
-# Android Studio 那些头痛的错误
+# Android 错误
 
 [TOC]
 

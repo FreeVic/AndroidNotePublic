@@ -8,18 +8,42 @@
 	HEAD^	Head的父提交
 
 
-# 配置
+## 配置
 
 	git config --global user.name "name"		配置用户名
 	git config --global user.email "email"		配置邮箱
 	git config --gobal core.autocrlf false		系统的换行符错误
 	git config core.autocrlf                    crlf警告
 
-# 创建仓库
+## 生成SSH 秘钥
+
+1. 查看是否已经有了ssh密钥：cd ~/.ssh
+   如果没有密钥则不会有此文件夹，有则备份删除
+
+2. 生存密钥：
+
+   `ssh-keygen -t rsa -C “freeverse@qq.com”`
+
+   ```
+   按3个回车，密码为空。
+   Your identification has been saved in /home/tekkub/.ssh/id_rsa.
+   Your public key has been saved in /home/tekkub/.ssh/id_rsa.pub.
+   The key fingerprint is:
+   ………………
+   最后得到了两个文件：id_rsa和id_rsa.pub
+   ```
+
+3. 添加密钥到ssh：ssh-add 文件名 需要之前输入密码。
+
+4. 在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。
+
+5. 测试：ssh git@github.com
+
+## 创建仓库
 
 	git init
 
-# 添加于提交
+## 添加于提交
 
 	git add file-name
 	git add . stage所有文件 unstage 就reset操作 git reset head^
@@ -32,14 +56,14 @@
 										$ git add forgotten_file         这个文件忘记提交了，先add
 										$ git commit --amend			 利用这个命令提交，将不会产生新的提交记录，而是提交到前一个版本中
 
-# 查看
+## 查看
 
 	git status	查看工作区状态
 	git diff						查看当前工作区与缓冲区不同的地方
 	git diff HEAD -- <file-name>    查看某一个文件当前版本和工作区有什么不同（注意空格）
 	git diff --staged				查看当前工作区与最后一次版本库不同的地方
 
-# Log
+## Log
 
 	git log  						查看每次提交： -p 选项展开显示每次提交的内容差异，
 	git log -1						使用 git log -1 表示只显示最近一次
@@ -50,11 +74,57 @@
 
 	git log --graph												git提交的log视图
 	git log --pretty=format:"%h %s" --graph						分支及其分化衍合情况																
-	git reflog
+	git reflog	查看所有本地执行的操作
 	git log  --graph --pretty=oneline --abbrev-commit 			查看分支合并图
 
+## 查找提交
 
-# 版本回滚与文件管理
+1. 不带任何参数：git log 会列出所有提交，最近的排在最上面，按Q退出查看
+
+2. 显示前n条：git log --n
+
+3. 显示简要的增改行数统计：git log --stat
+
+4. 同上，显示得更全：git log -p
+
+5. 一行显示：只显示hash值和提交说明，git log --pretty=oneline，等同于git log –oneine
+
+6. 显示简单图形：git log –graph
+
+7. 控制显示的记录格式：git log --pretty=format:””，各占位符意义
+
+      a)%H  提交对象（commit）的完整哈希字串
+
+   ```
+      b)%h  提交对象的简短哈希字串
+      c)%T  树对象（tree）的完整哈希字串
+      d)%t  树对象的简短哈希字串
+      e)%P  父对象（parent）的完整哈希字串
+      f)%p  父对象的简短哈希字串
+      g)%an 作者（author）的名字
+      h)%ae 作者的电子邮件地址
+      i)%ad 作者修订日期（可以用 -date= 选项定制格式）
+      j)%ar 作者修订日期，按多久以前的方式显示
+      k)%cn 提交者(committer)的名字
+      l)%ce 提交者的电子邮件地址
+      m)%cd 提交日期
+      n)%cr 提交日期，按多久以前的方式显示
+      o)%s  提交说明
+   ```
+
+8. 指定路径：git log --pretty=oneline filePath
+
+9. 指定日期、关键字、作者、提交者
+
+    a)日期：git log --since=10.days，同样，类似的参数还有after、until、before
+
+   ```
+    b)关键字：git log --grep=keyword
+    c)作者：git log author=author
+    d)提交者：git log --committer=committer
+   ```
+
+## 版本回滚与文件管理
 
 	git reset --hard HEAD^      	回到上一个版本
 	git reset --hard <commitId>  	回到某一个版本
@@ -69,13 +139,13 @@
 	mv README.txt README			重命名和移动
 
 
-# SSH KEY 如果使用ssh
+## SSH KEY 如果使用ssh
 
 	ssh-keygen -t rsa -C "your email address" 	在C:\Users\Administrator\.ssh生成私匙，邮箱地址使用初始化的邮箱  (提醒：ssh-keygen没有空格)
 	ssh -T git@gitHub.com 验证ssh key
 
 
-# 远程仓库
+## 远程仓库
 
 	git fetch <repository名称> 						从远程查看抓取数据，不合并
 	git clone address			 					克隆远程仓库并且自动关联
@@ -101,7 +171,7 @@
 	git remote rm paul											删除远程仓库
 
 
-# 分支
+## 分支
 
 	git branch				查看分支
 	git branch <name>  		新建分支
@@ -110,7 +180,7 @@
 	git branch -d <name> 		删除
 	git branch -D <name> 		强行删除未合并的分支
 
-# 合并
+## 合并
 
 	git merge <name> 							把指定分支合并到当前分支，Fast-forward信息，合并是“快进模式”，也就是直接把master指向dev的当前提交，
 	git merge --no-ff -m "合并说明" <name> 		禁用快速合并,加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
@@ -139,7 +209,7 @@ rebase:原理是回到两个分支最近的共同祖先，根据当前分支（�
 
 
 
-# 工作区stash
+## 工作区stash
 
 	git stash 			储藏工作区
 	git stash list 		查看储藏
@@ -148,7 +218,7 @@ rebase:原理是回到两个分支最近的共同祖先，根据当前分支（�
 	git stash pop		恢复并删除储藏
 
 
-# 查看远程仓库
+## 查看远程仓库
 
 	git remote 		查看远程仓库信息
 	git remote -v	详细信息
@@ -156,7 +226,7 @@ rebase:原理是回到两个分支最近的共同祖先，根据当前分支（�
 	git remote rename <oldname> <newname> <远程查看重命名,注意，对远程仓库的重命名，也会使对应的分支名称发生变化，原来的 pb/master 分支现在成了 paul/master。>
 
 
-# TAG
+## TAG
 
 	git tag 							查看tag
 	git tag name 						打tag
@@ -168,7 +238,7 @@ rebase:原理是回到两个分支最近的共同祖先，根据当前分支（�
 	git push origin :refs/tags/name 	删除远程tag
 
 
-# Git子模块
+## Git子模块
 >子模块就是你的一个Git项目需要应用其他Git项目，但是希望子模块嫩腿独立关联远程仓库，。
 
     git submodule add <git://github.com/chneukirchen/rack.git rack> 在主项目下使用此命令关联子模块，如果操作成功，会在根目录生成.gitmodules文件
@@ -181,7 +251,7 @@ rebase:原理是回到两个分支最近的共同祖先，根据当前分支（�
     详情查看：https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97
 
 
-# 快捷配置
+## 快捷配置
 
 	git config --global color.ui.true
 	git config --global alias.st status 			 	配置别名
@@ -192,7 +262,7 @@ rebase:原理是回到两个分支最近的共同祖先，根据当前分支（�
 
 
 
-# 文件匹配符号
+## 文件匹配符号
 
 	dir/ 表示目录
 	dir/\*.class  表示dir下面的所有.class 结尾的文件
@@ -201,17 +271,17 @@ rebase:原理是回到两个分支最近的共同祖先，根据当前分支（�
 	git rm log/\*.log 删除log目录下所有 ".log" 结尾的文件
 	git rm \*~ 递归删除当前目录及其子目录下的所有 "~" 结尾的文件
 
-# 技巧
+## 技巧
 
 	提示命令：
 	git st 忘了命令，连续两次tag，会有提示
 
 
-# 忽略文件
+## 忽略文件
 
 	在.gitignore中编辑
 
-# 冲突
+## 冲突
 
 
 	CONFLICT 冲突
@@ -223,14 +293,14 @@ rebase:原理是回到两个分支最近的共同祖先，根据当前分支（�
 
 
 
-# 分支策略
+## 分支策略
 
 	首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；
 	干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本
 
 git开发流程图如：![](http://www.liaoxuefeng.com/files/attachments/001384909239390d355eb07d9d64305b6322aaf4edac1e3000/0)
 
-# gerrit
+## gerrit
 
 添加配置修改
 
