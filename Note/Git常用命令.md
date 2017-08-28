@@ -309,3 +309,15 @@ scp -p -P 8091 weizhijian@gerrit.workec.com:hooks/commit-msg .git/hooks/
 
 git config remote.origin.push refs/heads/*:refs/for/*
 ```
+## 别名
+
+```
+git config --global alias.co checkout
+在命令行就可以输入 git co
+```
+
+带参数的别名
+
+```
+files = "!f() { git diff --name-status \"$1\"; }; f"
+```
