@@ -52,10 +52,33 @@
 
 10. 截图
 
-   1. 使用系统目录下自带的命令 /system/bin/screencap
-   2. 截图 adb shell /system/bin/screencap -p /sdcard/screenshot.png
+11. 使用系统目录下自带的命令 /system/bin/screencap
+   1. 截图 adb shell /system/bin/screencap -p /sdcard/screenshot.png
 
-11. 清缓存
+12. 清缓存
 
-   1. 系统目录下 /system/bin/pm
-   2. adb shell /system/bin/pm clear packageName
+13. 系统目录下 /system/bin/pm
+   1. adb shell /system/bin/pm clear packageName
+
+14. 高德地图获得当前缩放等级
+
+   1. mAMap.getCameraPosition().zoom < 19
+
+15. plugin is too old  set ANDROID_DAILY_OVERRIDE environment
+
+   1. 根目录gradle版本太新
+
+16. gradle.properties配置
+
+   1. ```
+      org.gradle.daemon=true
+      org.gradle.parallel=true
+      org.gradle.jvmargs=-Xmx4000M
+      ```
+
+17. Android studio 书签描述乱码
+
+   1. 设置字体Microsoft yahei等
+
+18. ​
+

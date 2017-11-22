@@ -305,7 +305,7 @@ git开发流程图如：![](http://www.liaoxuefeng.com/files/attachments/0013849
 添加配置修改
 
 ```
-scp -p -P 8091 weizhijian@gerrit.workec.com:hooks/commit-msg .git/hooks/
+scp -p -P 8091 demo@gerrit.workec.com:hooks/commit-msg .git/hooks/
 
 git config remote.origin.push refs/heads/*:refs/for/*
 ```
