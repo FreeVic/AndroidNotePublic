@@ -70,3 +70,12 @@ maven库依赖exclude相应的jar
 ###2. 本地jar包A和B含有相同的class(包名一样的才会有冲突)
 
 通过代码混淆,让类的名字变掉(比较简单,就不贴了),暂时还没找到其他更好的替代方案
+
+### 3.如果是使用到了不同版本的jar包产生的冲突，可以指定强制使用哪个版本的jar
+
+1. ```
+   compile ('com.android.support:appcompat-v7:24.2.1'){
+   	force true
+   }
+   ```
+
