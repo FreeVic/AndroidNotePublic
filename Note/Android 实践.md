@@ -85,4 +85,12 @@
 
   - 设置字体Microsoft yahei等
 
+- Kotlin配置findViewById say goodbye
+
+  - 添加插件`apply plugin: 'kotlin-android-extensions'`
+  - 直接在代码中使用id进行逻辑处理（ide会自动导入layout，例如`kotlinx.android.synthetic.main.fragment_mine`
+  - ps：fragment需要在view初始化之后进行调用，即onViewCreated方法之后处理
+
+
+
 
