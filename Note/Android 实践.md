@@ -91,6 +91,32 @@
   - 直接在代码中使用id进行逻辑处理（ide会自动导入layout，例如`kotlinx.android.synthetic.main.fragment_mine`
   - ps：fragment需要在view初始化之后进行调用，即onViewCreated方法之后处理
 
+- TextView设置首行缩进 添加转义字符`\u3000`
+
+- 设置app默认字体颜色和大小
+
+  - ```
+    定义主题，并在AndroidManifest文件中引用
+    <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:textSize">42dp</item>
+        <item name="android:textColor">#FF0000</item>
+    </style>
+    ```
+
+
+
+- 设置TextView点击时变换背景和字体颜色
+
+  - 创建selector设置不同的背景对`state_-press` 属性区分，将selector设置给TextView作为背景
+  - 创建selector设置不同的颜色，`state_-press` 属性区分，将selector设置给TextView作为字体颜色
+
+
+- 当有2个子布局时点击事件由各子布局处理，当有1个子布局时，点击事件交给父布局处理
+
+  - 分情况设置子布局的clickable属性（设置点击事件或者enable并不管用╮(╯▽╰)╭）
+
+
+
 
 
 
