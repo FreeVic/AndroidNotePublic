@@ -114,12 +114,41 @@
 - 当有2个子布局时点击事件由各子布局处理，当有1个子布局时，点击事件交给父布局处理
 
   - 分情况设置子布局的clickable属性（设置点击事件或者enable并不管用╮(╯▽╰)╭）
+
 - margin 设置负值的作用
   - 控件的margin属性用来控制间距，如果是负值的话，就会进行重叠
-  - 例如下面的WebView界面，如果不想让用户看到底部的界面，那么就可以设置WebView的margin为负值
-  - ![](img/2017年12月20日2.jpg) ![](img/2017年12月20日1.jpg)
+  - 例如WebView界面，如果不想让用户看到底部的界面，那么就可以设置WebView的margin为负值
+
+- 复写返回键，将应用切换到后台，而不是退出
+
+  - ```
+    //方式一：将此任务转向后台
+    moveTaskToBack(false);
+    ```
+
+  - ```
+    //方式二：返回手机的主屏幕
+    Intent intent = new Intent(Intent.ACTION_MAIN);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    intent.addCategory(Intent.CATEGORY_HOME);
+    startActivity(intent);
+    ```
 
 
+
+- Kotlin重写属性的set方法，注意field的赋值
+
+  - ```
+    var name:String = ""
+            set(value) {
+                field = value
+                SPMain.setString(ConstValue.KEY_NAME,value)
+            }
+    ```
+
+
+
+- ​
 
 
 
