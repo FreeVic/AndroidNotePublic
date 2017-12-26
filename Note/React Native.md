@@ -49,4 +49,6 @@
     react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
     ```
 
-  - ​
+- com.android.ddmlib.InstallException: Failed to install all 
+
+  - 部分5.0系统问题，如果是小米，开发者选项--关闭 MIUI 优化

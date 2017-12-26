@@ -148,7 +148,19 @@
 
 
 
-- ​
+- BuildConfig 添加属性值
+
+
+  - 在 build.gradle 中 buildTypes 节点下的某个编译类型内添加
+
+  - String 类型的值需要加上转义的双引号 `\"`
+
+  - ```
+    //会在BuildConfig这个类中生成一个变量，变量名为LOG_DEBUG，值为false
+       buildConfigField("boolean", "LOG_DEBUG", "false")  
+    ```
+
+  - ​
 
 
 
