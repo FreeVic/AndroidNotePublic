@@ -128,7 +128,10 @@ open -a Go2Shell --args config
 #! /bin/bash
 echo abc
 终端中修改权限 chmod +x 文件.sh
-文件拖拽到命令行进行执行
+文件拖拽到命令行进行执行/或双击执行
+可以在脚本中切换到当前目录，防止找不到文件目录
+如果要查看报错信息，可以使用 sleep time 来延时一下
+
 ```
 15. 修改Launchpad图标行列
 ```
@@ -144,3 +147,11 @@ echo abc
 3. 切换程序 三指上滑／cmd＋tab
 4. 翻译,三指轻点
    ![](img/2016年08月16日_0.jpg)
+
+## Sublime Text
+
+- 安装 [Package Control](https://packagecontrol.io/installation) ，进行插件管理
+- GBK Support GBK 编码支持
+- SideBarEnhancements 侧边栏文件夹支持
+- [Spacegray](https://github.com/kkga/spacegray) 主题
+- ​

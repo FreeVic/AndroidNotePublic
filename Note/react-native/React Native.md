@@ -43,7 +43,7 @@
 
   - 新版本将index.android.js和index.ios.js合并为App.js了
 
-  - 创建assets目录，并执行下面的代码（ps：每次修改都需要执行，很无语）
+  - 创建assets目录，并执行下面的代码（ps：每次修改都需要执行，很无语，这是为了可以离线使用rn，当然可以直接 reload）
 
   - ```
     react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
