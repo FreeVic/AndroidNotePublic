@@ -122,7 +122,7 @@
 - 复写返回键，将应用切换到后台，而不是退出
 
   - ```
-    //方式一：将此任务转向后台
+    //方式一：将此任务转向后台,部分手机不生效
     moveTaskToBack(false);
     ```
 
@@ -153,11 +153,12 @@
 
   - 在 build.gradle 中 buildTypes 节点下的某个编译类型内添加
 
-  - String 类型的值需要加上转义的双引号 `\"`
+  - String 类型的值需要加上转义的双引号 `\"`，或者用单引号括起来
 
   - ```
     //会在BuildConfig这个类中生成一个变量，变量名为LOG_DEBUG，值为false
        buildConfigField("boolean", "LOG_DEBUG", "false")  
+       buildConfigField 'String','API_SERVER_URL','"http://wuxiaolong.me/"'
     ```
 
   - ​

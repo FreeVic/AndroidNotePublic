@@ -117,3 +117,39 @@ instant run在multidex为true时无效
 另外可以这样改下：
 将 buildToolsVersion "24.0.0" 改为 buildToolsVersion "23.0.3"
 ```
+## Android studio 关联下载的源码
+
+Mac 下 找到配置文件 /Users/用户名/Library/Preferences/AndroidStudio3.0/options/jdk.table.xml，修改对应 API 下的源码路径，
+
+```
+<jdk version="2">
+      <name value="Android API 24 Platform" />
+      <type value="Android SDK" />
+      <version value="java version &quot;1.8.0_152-release&quot;" />
+      <homePath value="$USER_HOME$/Documents/work/adt-bundle-mac-x86_64-20140702/sdk" />
+      <roots>
+        <annotationsPath>
+          <root type="composite">
+            <root type="simple" url="jar://$APPLICATION_HOME_DIR$/plugins/android/lib/androidAnnotations.jar!/" />
+          </root>
+        </annotationsPath>
+        <classPath>
+          <root type="composite">
+            <root type="simple" url="jar://$USER_HOME$/Documents/work/adt-bundle-mac-x86_64-20140702/sdk/platforms/android-24/android.jar!/" />
+            <root type="simple" url="file://$USER_HOME$/Documents/work/adt-bundle-mac-x86_64-20140702/sdk/platforms/android-24/data/res" />
+          </root>
+        </classPath>
+        <javadocPath>
+          <root type="composite" />
+        </javadocPath>
+        // 修改这个位置的 url 指向本地 sdk 目录下的源码即可
+        <sourcePath>
+          <root type="composite">
+            <root type="simple" url="file://$USER_HOME$/Documents/work/adt-bundle-mac-x86_64-20140702/sdk/sources/android-24" />
+          </root>
+        </sourcePath>
+      </roots>
+      <additional jdk="JDK" sdk="android-24" />
+    </jdk>
+```
+
