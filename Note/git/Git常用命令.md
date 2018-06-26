@@ -181,6 +181,7 @@
 	git checkout -b <name> 	新建并且切换
 	git branch -d <name> 		删除
 	git branch -D <name> 		强行删除未合并的分支
+	git push origin --delete <name> 删除远端分支
 
 ## 合并
 

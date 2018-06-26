@@ -16,7 +16,7 @@
 - Adb端口被占用
 
   - 查看5037端口的进程 netstat -ano|findstr “5037”
-  - ![](img/04181.png)
+  - ![](http://7xqdxj.com1.z0.glb.clouddn.com/04181.png)
   - 打开任务管理器杀掉其他进程即可
 
 - Adb devices 设备offline

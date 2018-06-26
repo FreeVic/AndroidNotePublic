@@ -120,7 +120,7 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
 13. 打开go2shell偏好
 
    ```
-open -a Go2Shell --args config
+   open -a Go2Shell --args config
    ```
 
 14. 创建可执行脚本
@@ -133,7 +133,23 @@ echo abc
 如果要查看报错信息，可以使用 sleep time 来延时一下
 
 ```
-15. 修改Launchpad图标行列
+15. 查看端口占用及杀进程
+
+    1. `sudo lsof -i :port`
+    2. `sudo kill -9 pid`
+
+16. 环境变量
+
+    1. 修改  **/etc/profile**  全局所有用户生效  修改 **.bash_profile** 当前用户生效
+
+       1. ```
+          文件末尾添加剂
+          export JAVA_HOME=/usr/share/jdk1.6.0_14 
+          export PATH=$JAVA_HOME/bin:$PATH 
+          zsh的话需要配置一下每次都要 source 当前的环境变量 source ./.bash_profile
+          ```
+
+17. 修改Launchpad图标行列
 ```
 列 defaults write com.apple.dock springboard-columns -int 8;killall Dock;
 行 defaults write com.apple.dock springboard-rows -int 8;killall Dock;
@@ -146,7 +162,7 @@ echo abc
 2. 切换桌面 三指左右滑动
 3. 切换程序 三指上滑／cmd＋tab
 4. 翻译,三指轻点
-   ![](img/2016年08月16日_0.jpg)
+   ![](http://7xqdxj.com1.z0.glb.clouddn.com/2016%E5%B9%B408%E6%9C%8816%E6%97%A5_0.jpg)
 
 ## Sublime Text
 
@@ -155,3 +171,4 @@ echo abc
 - SideBarEnhancements 侧边栏文件夹支持
 - [Spacegray](https://github.com/kkga/spacegray) 主题
 - ​
+

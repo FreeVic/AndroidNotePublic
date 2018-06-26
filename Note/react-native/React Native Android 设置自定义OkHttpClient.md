@@ -11,7 +11,7 @@
 
 RN当中fetch请求是在`NetWorkingModule` 这个类中的OkHttpClient发起的，所以我们需要替换成我们自己的client,大致有以下三种方案：
 
-- **1.下载RN源码修改然后编译打包**(不推荐直接修改源码，如果RN版本更新那么维护起来就比较痛苦了)
+- **下载RN源码修改然后编译打包**(不推荐直接修改源码，如果RN版本更新那么维护起来就比较痛苦了)
 
   - Android端的源码其实就是node modules/react-native下`ReactAndroid`和`ReactCommon`两个项目，关于怎么导入到安卓工程，有很多文章：[RN源码编译1](https://www.jianshu.com/p/bd4bcdceba9b) [RN源码编译2](https://www.jianshu.com/p/fbd29a9799ee)
 
@@ -31,11 +31,11 @@ RN当中fetch请求是在`NetWorkingModule` 这个类中的OkHttpClient发起的
 
     - 然后设置自定义的client `OkHttpClientProvider.replaceOkHttpClient(client)`
 
-- **2.反射设置自定义的client**
+- **反射设置自定义的client**
 
   - 虽然`NetWorkingModule` 中的client是final的，但是并没有在声明的时候就进行初始化，所以通过反射是可以进行设值的，由于时间原因，并没有去实践这种做法。
 
-- **3.实现自定义的 MainReactPackage**
+- **实现自定义的 MainReactPackage**
 
   - 由于 `NetWorkingModule` 是在 `MainReactPackage` 中初始化的，而 `MainReactPackage` 又是我们自己设置给 `ReactInstanceManager` ，所以就可以尝试继承 `MainReactPackage` ，重写生成 `NetWorkingModule` 的逻辑。需要注意的是 `NetWorkingModule` 的访问是包范围的，所以初始化代码也要放在对应的包下面，即`com.facebook.react.modules.network`
 

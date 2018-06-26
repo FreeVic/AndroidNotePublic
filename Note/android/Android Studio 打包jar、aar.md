@@ -2,15 +2,16 @@ Android Studio打包jar、aar及其引用
 ---------------------------
 >项目有module app,需要引用module b
 
-####1. 新建 lib module b
+
+#### 1. 新建 lib module b
 Studio中新建module,File--New Module--Android Library
 
-####2. 导出jar/aar
+#### 2. 导出jar/aar
 生成的lib包路径:
 jar:build\intermediates\bundles\debug\classes.jar
 aar:build\outputs\aar\b-release.aar
 
-####3. 引用
+#### 3. 引用
 修改项目(不是module app)的build.gradle
 
 	    allprojects {
@@ -31,5 +32,5 @@ libs用的是默认的相对路径,如果你的libs是与res目录平级的(ecli
 	    }
 同样,libs是默认的相对路径,如果是eclipse项目则是src/main/libs/classes.jar
 
-####4. 参考
+#### 4. 参考
 [如何在Android Studio添加本地aar包引用](http://jingyan.baidu.com/article/2a13832890d08f074a134ff0.html)

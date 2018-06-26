@@ -6,7 +6,7 @@
 
 ## 配置
 
-![](img/2016年6月30日_0.jpg)
+![](http://7xqdxj.com1.z0.glb.clouddn.com/2016%E5%B9%B46%E6%9C%8830%E6%97%A5_0.jpg)
 
 如果,Studio已经生成了测试代码对应的目录
 
@@ -32,7 +32,7 @@
 
 - 打开Sdk Manager 下载Extras/Android Support Respository
 
-  ![](img/2016年6月30日_1.jpg)
+  ![](http://7xqdxj.com1.z0.glb.clouddn.com/2016%E5%B9%B46%E6%9C%8830%E6%97%A5_1.jpg)
 
 ## 常见错误
 
@@ -99,7 +99,7 @@
 
 - 或者添加新的运行选项
 
-  ![](img/2016年6月30日_2.jpg)
+  ![](http://7xqdxj.com1.z0.glb.clouddn.com/2016%E5%B9%B46%E6%9C%8830%E6%97%A5_2.jpg)
 
 ### [代码](https://git.coding.net/NewDemo/Demo.git)
 
