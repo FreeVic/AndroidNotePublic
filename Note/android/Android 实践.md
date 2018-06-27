@@ -161,9 +161,21 @@
        buildConfigField 'String','API_SERVER_URL','"http://wuxiaolong.me/"'
     ```
 
-  - ​
+### setResult 调用时机
 
+B 回退到 A 时,调用顺序
 
+```
+B---onPause
+A---onActivityResult
+A---onRestart
+A---onStart
+A---onResume
+B---onStop
+B---onDestroy
+```
+
+但不保证B 的 onPause 一定在 A 的 onActivityResult 之后,所以最好不要放在生命周期里调用setResult
 
 
 
