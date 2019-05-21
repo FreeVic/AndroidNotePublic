@@ -103,4 +103,3 @@ class AnnotationHandler extends AbstractProcessor {
 ```
 
 [Android 编写基于编译时注解的项目](https://blog.csdn.net/lmj623565791/article/details/51931859)
-

@@ -3,7 +3,7 @@
 [TOC]
 
 	提交流程：工作区-->缓冲区-->本地仓库-->远程仓库
-
+	
 	master 表示默认的开发分支
 	origin 默认的远程仓库版本
 	HEAD   指向的是当前分支。
@@ -196,7 +196,7 @@ merge的说明：把两个分支最新的快照（C3 和 C4）以及二者最新
 
 
 	git rebase master 		把在一个分支里提交的改变移到另一个分支里重放一遍。
-
+	
 							它的原理是回到两个分支最近的共同祖先，根据当前分支（也就是要进行衍合的分支 experiment）后续的历次提交对象（这里只有一个 C3），
 							生成一系列文件补丁，然后以基底分支（也就是主干分支 master）最后一个提交对象（C4）为新的出发点，
 							逐个应用之前准备好的补丁文件，最后会生成一个新的合并提交对象（C3'），
@@ -308,9 +308,17 @@ git开发流程图如：![](http://www.liaoxuefeng.com/files/attachments/0013849
 添加配置修改
 
 ```
-scp -p -P 8091 demo@gerrit.workec.com:hooks/commit-msg .git/hooks/
+// gerrit 地址
+https://gerrit.workec.com/#/q/status:open
+
+// 工程根目录执行
+scp -p -P 8091 用户名@gerrit.workec.com:hooks/commit-msg .git/hooks/
 
 git config remote.origin.push refs/heads/*:refs/for/*
+
+// 提交代码
+git commit -m 'test'
+git push origin HEAD:refs/for/分支名
 ```
 ## 别名
 

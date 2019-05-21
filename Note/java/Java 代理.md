@@ -84,7 +84,7 @@ public class TestProxy implements BaseTest {
 
 以目标对象子类的方式实现动态代理,又叫子类代理
 
-Cglib包的底层是通过使用一个小而块的字节码处理框架ASM来转换字节码并生成新的类.不鼓励直接使用ASM,因为它要求你必须对JVM内部结构包括class文件的格式和指令集都很熟悉.
+Cglib包的底层是通过使用一个小而快的字节码处理框架ASM来转换字节码并生成新的类.不鼓励直接使用ASM,因为它要求你必须对JVM内部结构包括class文件的格式和指令集都很熟悉.
 
 ```
 public class TestProxy1 implements BaseTest {

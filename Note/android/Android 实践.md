@@ -177,6 +177,13 @@ B---onDestroy
 
 但不保证B 的 onPause 一定在 A 的 onActivityResult 之后,所以最好不要放在生命周期里调用setResult
 
+- 根据 id 获取颜色的16进制值
 
+  ```kotlin
+  // 得到颜色值 和0xffffff进行与运算
+  "#${CommonApp.getApplication().resources.getColor(resId).and(0xffffff).toString(16)}"
+  ```
+
+- 
 
 

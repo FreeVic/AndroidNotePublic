@@ -71,6 +71,10 @@
 
   - 查看当前用户可以查看的数据库 `show databases;`
 
+    - 选择数据库 `use dbName`
+    - 显示表 `show tables`
+    - 
+
   - 创建数据库 `create database dbname`
 
   - 创建表
